@@ -7,11 +7,11 @@ template Dummy() {
     signal output outP;
     signal output outQ;
 
-    signal beta;
+    signal lambda;
 
-    beta <-- p / q;
-    beta * q === p;
+    lambda <-- p / q;
+    lambda * q === p;
     
-    outP <== beta * beta - (2 * p);
-    outQ <== beta * (p - outP) - q;
+    outP <== lambda * lambda - (2 * p);
+    outQ <== lambda * (p - outP) - q;
 }
