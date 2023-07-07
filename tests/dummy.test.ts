@@ -16,7 +16,7 @@ describe('witness tester', () => {
   it('should pass on correct witness with inputs=(0,0)', async () => {
     const witness = await circuit.calculateWitness({p: BigInt(0), q: BigInt(0)});
     await circuit.expectConstraintPass(witness);
-    await circuit.assertOut(witness, { outP: BigInt(0), outQ: BigInt(0) });
+    await circuit.assertOut(witness, {outP: BigInt(0), outQ: BigInt(0)});
   });
 
   it('should pass on correct witness with inputs=(2,2)', async () => {
@@ -45,7 +45,7 @@ describe('witness tester', () => {
     const badWitness = await circuit.editWitness(witness, {
       'main.lambda': BigInt('21888242871839275222246405745257275088548364400416034343698204186575808495617'),
     });
-    await circuit.assertOut(witness, { outP: BigInt(0), outQ: BigInt(0) });
+    await circuit.assertOut(badWitness, {outP: BigInt(0), outQ: BigInt(0)});
     await circuit.expectConstraintPass(badWitness);
   });
 
