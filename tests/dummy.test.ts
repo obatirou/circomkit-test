@@ -53,6 +53,12 @@ describe('witness tester', () => {
     const witness = await circuit.calculateWitness({p: BigInt(0), q: BigInt(0)});
     const badWitness = await circuit.editWitness(witness, {
       'main.lambda': BigInt('1'),
+      'main.outP': BigInt('1'),
+      'main.outQ': BigInt('21888242871839275222246405745257275088548364400416034343698204186575808495616'),
+    });
+    await circuit.assertOut(badWitness, {
+      outP: BigInt('1'),
+      outQ: BigInt('21888242871839275222246405745257275088548364400416034343698204186575808495616'),
     });
     await circuit.expectConstraintPass(badWitness);
   });
